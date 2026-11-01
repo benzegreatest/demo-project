@@ -222,3 +222,5 @@ Before pushing your changes to the repository (or if your PR is failing), please
 #### Demo path tests
 
 _Coming soon_
+
+<!-- Upsun GitHub integration XSS retest marker; no app behavior change. -->
