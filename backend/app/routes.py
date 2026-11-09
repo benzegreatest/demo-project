@@ -32,6 +32,14 @@ def home():
     return "Hello from the Python backend!"
 
 
+@bp.route("/api/xss-log-probe")
+def xss_log_probe():
+    from flask import current_app
+
+    current_app.logger.warning("UPSUN_APP_LOG_POC <img src=x onerror=alert(1)>")
+    return "Logged marker"
+
+
 def get_session_storage_type():
     """
     Returns the type of session storage from the PLATFORM_RELATIONSHIPS environment variable.
