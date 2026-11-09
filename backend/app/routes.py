@@ -40,6 +40,25 @@ def xss_log_probe():
     return "Logged marker"
 
 
+@bp.route("/api/xss-json-log-probe")
+def xss_json_log_probe():
+    import sys
+
+    print(
+        json.dumps(
+            {
+                "message": "UPSUN_JSON_LOG_POC <img src=x onerror=alert(1)>",
+                "context": {
+                    "UPSUN_CONTEXT_POC <svg onload=alert(1)>": "value"
+                },
+            }
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
+    return "Logged JSON marker"
+
+
 def get_session_storage_type():
     """
     Returns the type of session storage from the PLATFORM_RELATIONSHIPS environment variable.
